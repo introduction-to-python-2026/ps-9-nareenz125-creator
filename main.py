@@ -6,7 +6,7 @@ import pandas as pd
 df = pd.read_csv('parkinsons.csv')
 df = df.dropna()
 df.head()
-print(df.columns.to_list())
+print(df.columns.to_list()) 
 
 import matplotlib.pyplot as plt
 import seaborn as sns
