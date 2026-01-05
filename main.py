@@ -13,9 +13,15 @@ plt.show()
 selected_features = ['MDVP:Flo(Hz)', 'MDVP:Jitter(%)']
 x = df[selected_features]
 y = df['status']
+from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
-scaler = MinMaxScaler()
-x = scaler.fit_transform(x)
+from sklearn.linear_model import LogisticRegression
+
+model = Pipeline([
+    ('scaler', MinMaxScaler()),
+    ('logreg', LogisticRegression(max_iter=1000))
+])
+
 from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state = 42)
 from sklearn.linear_model import LogisticRegression
