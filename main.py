@@ -3,7 +3,6 @@
 
 import lab_setup_do_not_edit
 import pandas as pd
-
 df = pd.read_csv('parkinsons.csv')
 df = df.dropna()
 df.head()
@@ -21,6 +20,7 @@ y = df['status']
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LogisticRegression
+import joblib
 
 model = Pipeline([
     ('scaler', MinMaxScaler()),
@@ -28,7 +28,6 @@ model = Pipeline([
 ])
 
 model.fit(x, y)
-
-import joblib
 joblib.dump(model, 'my_model.joblib')
+
 
