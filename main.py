@@ -3,30 +3,24 @@
 import lab_setup_do_not_edit
 
 import pandas as pd
-df = pd.read_csv('parkinsons.csv')
-df = df.dropna()
+df = pd.read_csv('/content/parkinsons.csv')
 df.head()
 
 print(df.columns.to_list())
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-sns.pairplot(df, hue='status', diag_kind='kde', corner=True)
-plt.show()
-
-selected_features = ['MDVP:Flo(Hz)', 'MDVP:Jitter(%)']
-x = df[selected_features]
-y = df['status']
+selected_features = df[['MDVP:Fo(Hz)', 'MDVP:Flo(Hz)']]
+output = df['status']
+x = selected_features
+y = output
 
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler()
 x = scaler.fit_transform(x)
 
 from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.6, random_state=42)
 
-from sklearn.linear_model import LogisticRegression
-model = LogisticRegression(max_iter = 99)
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier()
 model.fit(x_train, y_train)
 
 from sklearn.metrics import accuracy_score
