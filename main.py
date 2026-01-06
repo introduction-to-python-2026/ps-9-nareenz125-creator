@@ -30,6 +30,6 @@ y_pred = model.predict(x_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(accuracy)
 
-import joblib
+import joblib 
 
 joblib.dump(RandomForestClassifier, 'my_model.joblib500')
