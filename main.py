@@ -12,7 +12,7 @@ print(df.columns.to_list())
 selected_features = df[['MDVP:Fo(Hz)', 'MDVP:Flo(Hz)']] 
 output = df['status']
 x = selected_features
-y = output
+y = output 
 
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler()
