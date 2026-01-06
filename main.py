@@ -1,3 +1,4 @@
+# Download the data from your GitHub repository
 !wget https://raw.githubusercontent.com/yotam-biu/ps9/main/parkinsons.csv -O /content/parkinsons.csv
 !wget https://raw.githubusercontent.com/yotam-biu/python_utils/main/lab_setup_do_not_edit.py -O /content/lab_setup_do_not_edit.py
 import lab_setup_do_not_edit
@@ -30,6 +31,3 @@ from sklearn.metrics import accuracy_score
 y_pred = model.predict(x_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(accuracy)
-
-import joblib
-joblib.dump((model, scaler), 'my_model.joblib')
