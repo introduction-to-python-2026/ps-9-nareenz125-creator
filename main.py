@@ -7,7 +7,7 @@ df = pd.read_csv('/content/parkinsons.csv')
 df.head()
 
 print(df.columns.to_list())
-selected_features = df[['MDVP:Fo(Hz)', 'MDVP:Flo(Hz)']]
+selected_features = df[['MDVP:Fo(Hz)', 'MDVP:Flo(Hz)']] 
 output = df['status']
 x = selected_features
 y = output
