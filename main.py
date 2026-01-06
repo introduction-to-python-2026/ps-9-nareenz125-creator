@@ -19,9 +19,7 @@ scaler = MinMaxScaler()
 x = scaler.fit_transform(x)
 
 from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(
-    x, y, test_size=0.6, random_state=42
-)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.6, random_state=42)
 
 from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier()
@@ -34,4 +32,4 @@ print(accuracy)
 
 import joblib
 
-joblib.dump(RandomForestClassifier, 'my_model.joblib')
+joblib.dump(RandomForestClassifier, 'my_model.joblib500')
