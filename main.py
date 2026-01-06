@@ -33,7 +33,3 @@ print(accuracy)
 
 import joblib
 joblib.dump((model, scaler), 'my_model.joblib')
-
-loaded_model, loaded_scaler = joblib.load('my_model.joblib')
-y_pred_loaded = loaded_model.predict(x_test)
-print("Accuracy after loading:", accuracy_score(y_test, y_pred_loaded))
