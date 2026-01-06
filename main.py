@@ -7,6 +7,7 @@ df = pd.read_csv('/content/parkinsons.csv')
 df.head()
 
 print(df.columns.to_list())
+
 selected_features = df[['MDVP:Fo(Hz)', 'MDVP:Flo(Hz)']] 
 output = df['status']
 x = selected_features
@@ -17,7 +18,9 @@ scaler = MinMaxScaler()
 x = scaler.fit_transform(x)
 
 from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.6, random_state=42)
+x_train, x_test, y_train, y_test = train_test_split(
+    x, y, test_size=0.6, random_state=42
+)
 
 from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier()
@@ -29,5 +32,8 @@ accuracy = accuracy_score(y_test, y_pred)
 print(accuracy)
 
 import joblib
+joblib.dump((model, scaler), 'my_model.joblib')
 
-joblib.dump(model, 'my_model.joblib')
+loaded_model, loaded_scaler = joblib.load('my_model.joblib')
+y_pred_loaded = loaded_model.predict(x_test)
+print("Accuracy after loading:", accuracy_score(y_test, y_pred_loaded))
